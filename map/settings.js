@@ -1056,7 +1056,7 @@ var map_cfg = {
         "id": 102,
         "name": "Iceland",
         "shortname": "",
-        "link": "https://michaloleszak.com/photography/countries/iceland",
+        "link": "https://michaloleszak.com/photography/iceland",
         "comment": "",
         "image": "",
         "color_map": "#7798BA",
