@@ -79,19 +79,19 @@
 }
 
 .fm-scale {
-	float: left;
-	position: absolute;
+	float: center;
+	position: center;
 	left: 0px;
 	bottom: 0px;
 	z-index: 2;
 	margin: 10px
 }
 .fm-scale div {
-	float: left;
+	float: center;
 }
 .fm-scale a {
 	display: block;
-	float: left;
+	float: center;
 	font-family: Times, "Times New Roman";
 	font-size: 31px;
 	font-weight: bold;
