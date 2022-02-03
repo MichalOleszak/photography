@@ -1,6 +1,6 @@
 var map_cfg = {
-    "mapWidth": "90%",
-    "mapHeight": "90%",
+    "mapWidth": "85%",
+    "mapHeight": "85%",
     
 	"shadowAllow": false,
     "shadowWidth": 2,
@@ -14,7 +14,7 @@ var map_cfg = {
     
     "zoomEnable": true,
     "zoomEnableControls": true,
-    "zoomIgnoreMouseScroll": false,
+    "zoomIgnoreMouseScroll": true,
     "zoomMax": 10,
     "zoomStep": 1,
     
