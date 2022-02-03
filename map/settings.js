@@ -1,6 +1,6 @@
 var map_cfg = {
-    "mapWidth": "100%",
-    "mapHeight": 400,
+    "mapWidth": "90%",
+    "mapHeight": "90%",
     
 	"shadowAllow": false,
     "shadowWidth": 2,
@@ -1056,7 +1056,7 @@ var map_cfg = {
         "id": 102,
         "name": "Iceland",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/countries/iceland",
         "comment": "",
         "image": "",
         "color_map": "#7798BA",
