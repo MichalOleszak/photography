@@ -17,18 +17,17 @@ layout: default
 
     <!-- Main -->
     <div id="main">
-        <!-- start Fla-shop.com HTML5 Map -->
-        <div id='map-container'></div>
-        <link href="/map/map.css" rel="stylesheet">
-        <script src="/map/raphael.min.js"></script>
-        <script src="/map/settings.js"></script>
-        <script src="/map/paths.js"></script>
-        <script src="/map/map.js"></script>
-        <script>
-          var map = new FlaMap(map_cfg);
-          map.drawOnDomReady('map-container');
-        </script>
-        <!-- end HTML5 Map -->
+        {% for image in site.static_files %}
+        {% if image.path contains 'fulls' %}
+        <article class="thumb">
+            <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" class="image">
+                <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/{{ image.name }}" alt=""
+                     data-name="{{ image.name }}"/></a>
+            <!--<h2></h2>
+            <p></p>-->
+        </article>
+        {% endif %}
+        {% endfor %}
     </div>
 
     <!-- Footer -->
