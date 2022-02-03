@@ -19,6 +19,7 @@ layout: default
     <div id="main">
         {% for image in site.static_files %}
         {% if image.path contains 'fulls' %}
+        {% if image.path contains 'iceland' %}
         <article class="thumb">
             <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/iceland/{{ image.name }}" class="image">
                 <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/iceland/{{ image.name }}" alt=""
@@ -26,6 +27,7 @@ layout: default
             <!--<h2></h2>
             <p></p>-->
         </article>
+        {% endif %}
         {% endif %}
         {% endfor %}
     </div>
