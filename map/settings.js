@@ -766,11 +766,11 @@ var map_cfg = {
         "id": 73,
         "name": "Faroe Islands",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/faroeislands",
         "comment": "",
         "image": "",
-        "color_map": "#b4c5d6",
-        "color_map_over": "#b4c5d6",
+        "color_map": "#7798BA",
+        "color_map_over": "#366CA3"
     },
     "st74": {
         "id": 74,
