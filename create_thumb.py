@@ -18,7 +18,9 @@ print(f"Running for:\n  countries: {args.countries}\n  force: {args.force}")
 for country in args.countries:
     files = [Path(fulls_path, country, f) for f in os.listdir(os.path.join(fulls_path, country)) if f.lower().endswith(".jpg")]
     for infile in files:
-        outfile = os.path.join(thumbs_path, country, infile.name)
+        outdir = os.path.join(thumbs_path, country)
+        outfile = os.path.join(outdir, infile.name)
+        os.makedirs(outdir, exist_ok=True)
         if os.path.exists(outfile) and not args.force:
             print(f"{outfile} already exists, skipping")
             continue
@@ -27,6 +29,6 @@ for country in args.countries:
             size = im.size[0] // 4, im.size[1] // 4
             im.thumbnail(size)
             im.save(outfile, "JPEG")
-        except IOError:
-            print(f"Cannot create thumbnail for", {infile})
+        except IOError as e:
+            print(f"Cannot create thumbnail for {infile}, error{e}")
 print("Finished successfully! :)")
