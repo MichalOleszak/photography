@@ -4,15 +4,15 @@ image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 
 # UI configs
-title: "Photography by Kamila & Michał"
+title: "Photography by Michał Oleszak"
 subtitle: "See the world!"
-author: "Kamila & Michał"
+author: "Michał Oleszak"
 header:
  title: "Photography"
- subtitle: "by Kamila & Michał"
+ subtitle: "by Michał Oleszak"
 footer:
- name: "Hey there, we are Kamila & Michał"
- bio: "Kamila is a business intelligence consultant and Michał <a href=\"https://michaloleszak.com\">works in AI</a>, teaching intelligence to machines. Currently based in Warsaw, Poland, we travel the world taking pictures on the way."
+ name: "Hey there, I'm Michał"
+ bio: "I <a href=\"https://michaloleszak.com\">work in AI</a>, teaching intelligence to machines. Currently based in Warsaw, Poland, I travel the world taking pictures on the way."
  # github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
 web_design: "<a href=\"https://github.com/rampatra/photography\">rampatra</a>"
 social_urls:
