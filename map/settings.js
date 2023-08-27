@@ -496,7 +496,7 @@ var map_cfg = {
         "id": 46,
         "name": "China",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/china",
         "comment": "",
         "image": "",
         "color_map": "#7798BA",
