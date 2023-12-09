@@ -1080,7 +1080,7 @@ var map_cfg = {
         "comment": "",
         "image": "",
         "color_map": "#7798BA",
-        "color_map_over": "#366CA3"
+        "color_map_over": "#366CA3",
     },
     "st105": {
         "id": 105,
@@ -2020,7 +2020,7 @@ var map_cfg = {
         "comment": "",
         "image": "",
         "color_map": "#7798BA",
-        "color_map_over": "#366CA3"
+        "color_map_over": "#366CA3",
     },
     "st199": {
         "id": 199,
@@ -2390,7 +2390,7 @@ var map_cfg = {
         "comment": "",
         "image": "",
         "color_map": "#7798BA",
-        "color_map_over": "#366CA3"
+        "color_map_over": "#366CA3",
     },
     "st236": {
         "id": 236,
