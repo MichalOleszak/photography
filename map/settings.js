@@ -1076,11 +1076,11 @@ var map_cfg = {
         "id": 104,
         "name": "Indonesia",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/indonesia",
         "comment": "",
         "image": "",
-        "color_map": "#b4c5d6",
-        "color_map_over": "#b4c5d6",
+        "color_map": "#7798BA",
+        "color_map_over": "#366CA3"
     },
     "st105": {
         "id": 105,
@@ -2016,11 +2016,11 @@ var map_cfg = {
         "id": 198,
         "name": "Singapore",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/singapore",
         "comment": "",
         "image": "",
-        "color_map": "#b4c5d6",
-        "color_map_over": "#b4c5d6",
+        "color_map": "#7798BA",
+        "color_map_over": "#366CA3"
     },
     "st199": {
         "id": 199,
@@ -2386,11 +2386,11 @@ var map_cfg = {
         "id": 235,
         "name": "United Arab Emirates",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/uae",
         "comment": "",
         "image": "",
-        "color_map": "#b4c5d6",
-        "color_map_over": "#b4c5d6",
+        "color_map": "#7798BA",
+        "color_map_over": "#366CA3"
     },
     "st236": {
         "id": 236,
