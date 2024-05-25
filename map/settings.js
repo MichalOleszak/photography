@@ -1589,8 +1589,8 @@ var map_cfg = {
         "link": "",
         "comment": "",
         "image": "",
-        "color_map": "#b4c5d6",
-        "color_map_over": "#b4c5d6",
+        "color_map": "#7798BA",
+        "color_map_over": "#366CA3"
     },
     "st156": {
         "id": 156,
