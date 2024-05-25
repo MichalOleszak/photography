@@ -1586,7 +1586,7 @@ var map_cfg = {
         "id": 155,
         "name": "Nepal",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/nepal",
         "comment": "",
         "image": "",
         "color_map": "#7798BA",
