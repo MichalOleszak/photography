@@ -1,3 +1,9 @@
+"""
+Usage example:
+cd ~/Documents/photography
+python create_thumb.py --countries morocco georgia
+"""
+
 import argparse
 import os
 import sys

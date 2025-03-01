@@ -1606,11 +1606,11 @@ var map_cfg = {
         "id": 157,
         "name": "New Zealand",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/new_zealand",
         "comment": "",
         "image": "",
-        "color_map": "#b4c5d6",
-        "color_map_over": "#b4c5d6",
+        "color_map": "#7798BA",
+        "color_map_over": "#366CA3"
     },
     "st158": {
         "id": 158,
