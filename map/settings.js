@@ -1406,11 +1406,11 @@ var map_cfg = {
         "id": 137,
         "name": "Malta",
         "shortname": "",
-        "link": "",
+        "link": "https://michaloleszak.com/photography/malta",
         "comment": "",
         "image": "",
-        "color_map": "#b4c5d6",
-        "color_map_over": "#b4c5d6",
+        "color_map": "#7798BA",
+        "color_map_over": "#366CA3"
     },
     "st138": {
         "id": 138,
