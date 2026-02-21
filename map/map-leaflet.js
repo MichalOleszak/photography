@@ -47,6 +47,7 @@
         '642': { slug: 'romania', name: 'Romania' },
         '702': { slug: 'singapore', name: 'Singapore' },
         '703': { slug: null, name: 'Slovakia' },
+        '705': { slug: null, name: 'Slovenia' },
         '724': { slug: 'spain', name: 'Spain' },
         '752': { slug: 'sweden', name: 'Sweden' },
         '756': { slug: 'switzerland', name: 'Switzerland' },
