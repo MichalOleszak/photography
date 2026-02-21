@@ -38,7 +38,7 @@
         '504': { slug: 'morocco', name: 'Morocco' },
         '524': { slug: 'nepal', name: 'Nepal' },
         '528': { slug: 'netherlands', name: 'Netherlands' },
-        '554': { slug: 'new_zealand', name: 'New Zealand' },
+        '554': { slug: 'new-zealand', name: 'New Zealand' },
         '578': { slug: 'norway', name: 'Norway' },
         '616': { slug: 'poland', name: 'Poland' },
         '620': { slug: 'portugal', name: 'Portugal' },
