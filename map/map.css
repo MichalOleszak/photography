@@ -3,7 +3,12 @@
     width: 100%;
     height: calc(100vh - 4em);  /* full viewport minus header height */
     z-index: 1;
-    background: #242629;
+    background: #1a1a1a;
+}
+
+/* Fix tile-gap hairlines */
+.leaflet-tile-container img {
+    outline: 1px solid transparent;
 }
 
 /* ─── Country count badge ─── */
