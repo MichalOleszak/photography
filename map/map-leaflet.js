@@ -73,8 +73,8 @@
     // Initialize Leaflet map
     // ───────────────────────────────────────────────
     var map = L.map('map-container', {
-        center: [30, 10],
-        zoom: 3,
+        center: [20, 20],
+        zoom: 2,
         minZoom: 2,
         maxZoom: 7,
         zoomControl: false,
@@ -87,9 +87,6 @@
         subdomains: 'abcd',
         maxZoom: 19
     }).addTo(map);
-
-    // Zoom controls — bottom-left
-    L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Subtle attribution — bottom-right
     L.control.attribution({ position: 'bottomright', prefix: false })
@@ -226,9 +223,9 @@
     // ───────────────────────────────────────────────
     function adjustMapView() {
         if (window.innerWidth <= 480) {
-            map.setView([20, 10], 1);
+            map.setView([20, 20], 1);
         } else if (window.innerWidth <= 980) {
-            map.setView([30, 10], 2);
+            map.setView([20, 20], 2);
         }
     }
     adjustMapView();
