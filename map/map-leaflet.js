@@ -225,13 +225,27 @@
     // ───────────────────────────────────────────────
     // Responsive: adjust view on small screens
     // ───────────────────────────────────────────────
+    var defaultCenter = [25, 20];
+    var defaultZoom = 3;
+
     function adjustMapView() {
         if (window.innerWidth <= 480) {
-            map.setView([20, 20], 1);
+            defaultCenter = [20, 20];
+            defaultZoom = 1;
         } else if (window.innerWidth <= 980) {
-            map.setView([20, 20], 2);
+            defaultCenter = [20, 20];
+            defaultZoom = 2;
         }
+        map.setView(defaultCenter, defaultZoom);
     }
     adjustMapView();
+
+    // Reset to default view when navigating back (bfcache)
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+            map.setView(defaultCenter, defaultZoom);
+            map.invalidateSize();
+        }
+    });
 
 })();
