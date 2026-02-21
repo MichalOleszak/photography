@@ -7,12 +7,9 @@
 }
 
 /* Fix tile-gap hairlines */
-.leaflet-tile-pane {
-    image-rendering: -webkit-optimize-contrast;
-}
-.leaflet-tile {
-    transform: scale(1.005);
-    transform-origin: center center;
+.leaflet-tile-pane img {
+    width: 257px !important;
+    height: 257px !important;
 }
 
 /* ─── Country count badge ─── */
