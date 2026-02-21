@@ -22,6 +22,13 @@
             $body = $('body'),
             $wrapper = $('#wrapper');
 
+        // Restore page visibility when navigating back (bfcache).
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                document.body.classList.remove('page-leaving');
+            }
+        });
+
         // Hack: Enable IE workarounds.
         if (skel.vars.IEVersion < 12)
             $body.addClass('ie');
