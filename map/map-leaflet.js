@@ -74,7 +74,7 @@
     // ───────────────────────────────────────────────
     var map = L.map('map-container', {
         center: [20, 20],
-        zoom: 2,
+        zoom: 2.5,
         minZoom: 2,
         maxZoom: 7,
         zoomControl: false,

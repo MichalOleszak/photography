@@ -7,8 +7,12 @@
 }
 
 /* Fix tile-gap hairlines */
-.leaflet-tile-container img {
-    outline: 1px solid transparent;
+.leaflet-tile-pane {
+    image-rendering: -webkit-optimize-contrast;
+}
+.leaflet-tile {
+    transform: scale(1.005);
+    transform-origin: center center;
 }
 
 /* ─── Country count badge ─── */
