@@ -3,20 +3,10 @@
     width: 100%;
     height: calc(100vh - 4em);  /* full viewport minus header height */
     z-index: 1;
-    background: #1a1a1a;
-    /* Isolate from #wrapper's filter transition to prevent
-       compositing-layer boundary artifacts (horizontal lines).
-       See: https://github.com/Leaflet/Leaflet/issues/3575 */
-    isolation: isolate;
+    /* Match the CartoDB DarkMatter ocean color at the tile edges
+       so there is no visible seam between tiles and the container. */
+    background: #262626;
 }
-
-/*
- * Tile seam fix: Leaflet 1.9.4 ships mix-blend-mode: plus-lighter
- * on .leaflet-tile (PR #8891).  Do NOT override it with 'normal'.
- * No additional translate3d / will-change / backface-visibility —
- * those create extra GPU compositing layers that CAUSE seam artifacts
- * rather than fixing them.
- */
 
 /* ─── Country count badge ─── */
 .country-count-badge {

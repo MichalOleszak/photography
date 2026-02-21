@@ -128,26 +128,32 @@
     fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json')
         .then(function (res) { return res.json(); })
         .then(function (world) {
-            var countries = topojson.feature(world, world.objects.countries);
+            var allCountries = topojson.feature(world, world.objects.countries);
 
-            L.geoJSON(countries, {
-                style: function (feature) {
-                    var isVisited = visitedCountries.hasOwnProperty(feature.id);
+            // Only render visited countries.  Unvisited-country polygons
+            // extend to the Mercator clipping latitude (~±85°) and their
+            // borders create visible horizontal lines across the map.
+            // The CartoDB DarkMatter tiles already show the landmass shapes,
+            // so nothing visual is lost by omitting the unvisited GeoJSON.
+            var visitedFeatures = {
+                type: 'FeatureCollection',
+                features: allCountries.features.filter(function (f) {
+                    return visitedCountries.hasOwnProperty(f.id);
+                })
+            };
 
+            L.geoJSON(visitedFeatures, {
+                style: function () {
                     return {
-                        fillColor: isVisited ? '#7798BA' : '#2a2a2a',
-                        fillOpacity: isVisited ? 0.65 : 0.25,
-                        color: isVisited ? '#a0b8cf' : '#424242',
-                        weight: isVisited ? 1.2 : 0.5,
-                        opacity: isVisited ? 0.9 : 0.8
+                        fillColor: '#7798BA',
+                        fillOpacity: 0.65,
+                        color: '#a0b8cf',
+                        weight: 1.2,
+                        opacity: 0.9
                     };
                 },
                 onEachFeature: function (feature, layer) {
                     var id = feature.id;
-                    var isVisited = visitedCountries.hasOwnProperty(id);
-
-                    if (!isVisited) return;
-
                     var data = visitedCountries[id];
 
                     // Tooltip
