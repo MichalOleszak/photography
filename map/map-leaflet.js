@@ -1,7 +1,7 @@
 /*
  * Leaflet.js interactive world map for Photography by Michał Oleszak
  * Replaces the old FlaMap/Raphael.js SVG map with a modern, dark-themed map.
- * Uses CartoDB DarkMatter tiles + world-atlas TopoJSON for country boundaries.
+ * Uses world-atlas TopoJSON for country boundaries on a plain dark background.
  */
 
 (function () {
@@ -81,21 +81,12 @@
         maxZoom: 7,
         zoomControl: false,
         attributionControl: false,
-        worldCopyJump: true
+        worldCopyJump: true,
+        renderer: L.svg()
     });
 
-    // CartoDB DarkMatter (no labels) — retina tiles rendered at native 512px
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png', {
-        subdomains: 'abcd',
-        maxZoom: 19,
-        tileSize: 512,
-        zoomOffset: -1
-    }).addTo(map);
-
-    // Subtle attribution — bottom-right
-    L.control.attribution({ position: 'bottomright', prefix: false })
-        .addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OSM</a> &copy; <a href="https://carto.com/" target="_blank">CARTO</a>')
-        .addTo(map);
+    // No tile layer — pure dark background with GeoJSON country shapes
+    // This eliminates tile seam rendering artifacts entirely
 
     // ───────────────────────────────────────────────
     // Country count badge
@@ -135,9 +126,9 @@
                     var isVisited = visitedCountries.hasOwnProperty(feature.id);
 
                     return {
-                        fillColor: isVisited ? '#7798BA' : '#2a2a2a',
-                        fillOpacity: isVisited ? 0.65 : 0.25,
-                        color: isVisited ? '#a0b8cf' : '#424242',
+                        fillColor: isVisited ? '#7798BA' : '#2c2c2e',
+                        fillOpacity: isVisited ? 0.65 : 1,
+                        color: isVisited ? '#a0b8cf' : '#3a3a3c',
                         weight: isVisited ? 1.2 : 0.5,
                         opacity: isVisited ? 0.9 : 0.8
                     };
