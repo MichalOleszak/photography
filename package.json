@@ -2,7 +2,7 @@
   "name": "photography",
   "version": "3.0.0",
   "description": "A jekyll website for photographer cum developer",
-  "main": "npmfile.js",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
