@@ -6,8 +6,15 @@
     background: #1a1a1a;
 }
 
-.leaflet-container {
-    background: #1a1a1a;
+/* Fix tile seam lines */
+.leaflet-container img.leaflet-tile {
+    mix-blend-mode: normal;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+}
+.leaflet-tile-pane {
+    will-change: transform;
 }
 
 /* ─── Country count badge ─── */
