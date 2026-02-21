@@ -17,17 +17,16 @@ layout: default
 
     <!-- Main -->
     <div id="main">
-        {% for image in site.static_files %}
-        {% if image.path contains 'fulls' %}
         {% assign country = page.slug %}
-        {% if image.path contains country %}
+        {% assign country_dir = '/images/fulls/' | append: country | append: '/' %}
+        {% for image in site.static_files %}
+        {% if image.path contains country_dir %}
         {% if image.extname == '.jpg' or image.extname == '.jpeg' or image.extname == '.png' or image.extname == '.JPG' or image.extname == '.JPEG' or image.extname == '.PNG' %}
         <article class="thumb">
             <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ country }}/{{ image.name }}" class="image">
                 <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/{{ country }}/{{ image.name }}" alt=""
                      loading="lazy" decoding="async" data-name="{{ image.name }}"/></a>
         </article>
-        {% endif %}
         {% endif %}
         {% endif %}
         {% endfor %}
