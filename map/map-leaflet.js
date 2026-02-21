@@ -136,9 +136,9 @@
                     return {
                         fillColor: isVisited ? '#7798BA' : '#2a2a2a',
                         fillOpacity: isVisited ? 0.65 : 0.25,
-                        color: '#424242',
-                        weight: 0.5,
-                        opacity: 0.8
+                        color: isVisited ? '#a0b8cf' : '#424242',
+                        weight: isVisited ? 1.2 : 0.5,
+                        opacity: isVisited ? 0.9 : 0.8
                     };
                 },
                 onEachFeature: function (feature, layer) {
