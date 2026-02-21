@@ -45,7 +45,6 @@
         '620': { slug: 'portugal', name: 'Portugal' },
         '634': { slug: 'qatar', name: 'Qatar' },
         '642': { slug: 'romania', name: 'Romania' },
-        '702': { slug: 'singapore', name: 'Singapore' },
         '703': { slug: null, name: 'Slovakia' },
         '705': { slug: null, name: 'Slovenia' },
         '724': { slug: 'spain', name: 'Spain' },
@@ -65,6 +64,7 @@
         { name: 'Gibraltar', slug: null, lat: 36.14, lng: -5.35 },
         { name: 'Monaco', slug: null, lat: 43.73, lng: 7.42 },
         { name: 'San Marino', slug: null, lat: 43.94, lng: 12.46 },
+        { name: 'Singapore', slug: 'singapore', lat: 1.35, lng: 103.82 },
         { name: 'Vatican City', slug: null, lat: 41.90, lng: 12.45 }
     ];
 
