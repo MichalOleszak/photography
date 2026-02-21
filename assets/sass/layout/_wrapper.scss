@@ -11,9 +11,12 @@
 			'-moz-filter #{_duration(panel)} ease',
 			'-webkit-filter #{_duration(panel)} ease',
 			'-ms-filter #{_duration(panel)} ease',
-			'filter #{_duration(panel)} ease'
+			'filter #{_duration(panel)} ease',
+			'opacity 0.3s ease',
+			'transform 0.3s ease'
 		));
 		position: relative;
+		opacity: 1;
 
 		&:after {
 			@include vendor('pointer-events', 'none');

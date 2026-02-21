@@ -155,13 +155,26 @@
 			}
 
 			.caption {
-				display: none !important;
+				@include padding(1em, 1em);
+				background: rgba(0, 0, 0, 0.6);
+
+				p {
+					font-size: 0.85em;
+				}
 			}
 
-			.closer,
+			.closer {
+				opacity: 0.8;
+				background-size: 2.5em;
+				width: 4em;
+				height: 4em;
+			}
+
 			.nav-previous,
 			.nav-next {
-				display: none !important;
+				opacity: 0.8;
+				background-size: 3em;
+				width: 3.5em;
 			}
 		}
 	}

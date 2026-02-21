@@ -3,6 +3,12 @@ baseurl: "https://michaloleszak.com/photography/"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 
+# Collections
+collections:
+  countries:
+    output: true
+    permalink: /:name
+
 # UI configs
 title: "Photography by Michał Oleszak"
 subtitle: "Been there, took pics"

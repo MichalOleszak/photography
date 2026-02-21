@@ -177,7 +177,7 @@
                 || href.charAt(0) == '#')
                 return;
 
-            // Redirect on click.
+            // Redirect on click with page transition.
             $this
                 .removeAttr('href')
                 .css('cursor', 'pointer')
@@ -186,7 +186,10 @@
                     event.preventDefault();
                     event.stopPropagation();
 
-                    window.location.href = href;
+                    $body.addClass('page-leaving');
+                    setTimeout(function () {
+                        window.location.href = href;
+                    }, 300);
 
                 });
 
@@ -229,34 +232,23 @@
             if ($image.length == 0)
                 return;
 
-            // Image.
-            // This sets the background of the "image" <span> to the image pointed to by its child
-            // <img> (which is then hidden). Gives us way more flexibility.
-
-            // Set background.
-            $image.css('background-image', 'url(' + $image_img.attr('src') + ')');
-
-            // Set background position.
+            // Apply custom object-position if specified via data attribute.
             if (x = $image_img.data('position'))
-                $image.css('background-position', x);
+                $image_img.css('object-position', x);
 
-            // Hide original img.
-            $image_img.hide();
-
-            // Hack: IE<11 doesn't support pointer-events, which means clicks to our image never
-            // land as they're blocked by the thumbnail's caption overlay gradient. This just forces
-            // the click through to the image.
-            if (skel.vars.IEVersion < 11)
-                $this
-                    .css('cursor', 'pointer')
-                    .on('click', function () {
-                        $image.trigger('click');
-                    });
-
-            // EXIF data					
-            EXIF.getData($image_img[0], function () {
-                exifDatas[$image_img.data('name')] = getExifDataMarkup(this);
+            // EXIF data — read when each image loads (supports lazy loading).
+            $image_img.on('load', function () {
+                EXIF.getData(this, function () {
+                    exifDatas[$image_img.data('name')] = getExifDataMarkup(this);
+                });
             });
+
+            // For images already in cache.
+            if ($image_img[0].complete && $image_img[0].naturalWidth > 0) {
+                EXIF.getData($image_img[0], function () {
+                    exifDatas[$image_img.data('name')] = getExifDataMarkup(this);
+                });
+            }
 
         });
 
@@ -281,7 +273,7 @@
             onPopupOpen: function () {
                 $body.addClass('modal-active');
             },
-            overlayOpacity: 0,
+            overlayOpacity: 0.85,
             popupCloserText: '',
             popupHeight: 150,
             popupLoaderText: '',

@@ -44,4 +44,12 @@
 				}
 			}
 
+		// Smooth page-leave transition (fade out + slight slide).
+			&.page-leaving {
+				#wrapper {
+					opacity: 0 !important;
+					@include vendor('transform', 'translateY(10px)');
+				}
+			}
+
 	}
