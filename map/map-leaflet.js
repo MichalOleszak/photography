@@ -84,12 +84,12 @@
         worldCopyJump: true
     });
 
-    // CartoDB DarkMatter (no labels) — retina tiles for crisp rendering
+    // CartoDB DarkMatter (no labels) — retina tiles rendered at native 512px
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png', {
         subdomains: 'abcd',
         maxZoom: 19,
-        tileSize: 256,
-        zoomOffset: 0
+        tileSize: 512,
+        zoomOffset: -1
     }).addTo(map);
 
     // Subtle attribution — bottom-right
