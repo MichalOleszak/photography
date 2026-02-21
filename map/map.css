@@ -6,12 +6,6 @@
     background: #1a1a1a;
 }
 
-/* Fix tile-gap hairlines */
-.leaflet-tile-pane img {
-    width: 257px !important;
-    height: 257px !important;
-}
-
 /* ─── Country count badge ─── */
 .country-count-badge {
     background: rgba(31, 34, 36, 0.85);

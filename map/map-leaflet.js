@@ -74,8 +74,8 @@
     // Initialize Leaflet map
     // ───────────────────────────────────────────────
     var map = L.map('map-container', {
-        center: [20, 20],
-        zoom: 2.5,
+        center: [25, 20],
+        zoom: 3,
         minZoom: 2,
         maxZoom: 7,
         zoomControl: false,
@@ -83,10 +83,12 @@
         worldCopyJump: true
     });
 
-    // CartoDB DarkMatter (no labels) — free, dark aesthetic
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+    // CartoDB DarkMatter (no labels) — retina tiles for crisp rendering
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png', {
         subdomains: 'abcd',
-        maxZoom: 19
+        maxZoom: 19,
+        tileSize: 256,
+        zoomOffset: 0
     }).addTo(map);
 
     // Subtle attribution — bottom-right
