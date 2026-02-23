@@ -102,6 +102,21 @@
     // ───────────────────────────────────────────────
     // Country count badge
     // ───────────────────────────────────────────────
+
+    // Back badge (left of country count badge)
+    var BackBadge = L.Control.extend({
+        options: { position: 'topright' },
+        onAdd: function () {
+            var div = L.DomUtil.create('a', 'back-badge icon fa-arrow-left');
+            div.href = 'https://michaloleszak.com';
+            div.title = 'Back to michaloleszak.com';
+            div.setAttribute('aria-label', 'Back to michaloleszak.com');
+            div.setAttribute('rel', 'noopener');
+            div.style.marginRight = '0.5rem';
+            L.DomEvent.disableClickPropagation(div);
+            return div;
+        }
+    });
     var CountBadge = L.Control.extend({
         options: { position: 'topright' },
         onAdd: function () {
@@ -112,6 +127,7 @@
             return div;
         }
     });
+    new BackBadge().addTo(map);
     new CountBadge().addTo(map);
 
     // ───────────────────────────────────────────────
