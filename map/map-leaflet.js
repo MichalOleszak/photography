@@ -12,6 +12,8 @@
     // ───────────────────────────────────────────────
     var visitedCountries = {
         '040': { slug: 'austria', name: 'Austria' },
+        '442': { slug: null, name: 'Luxembourg' },
+        '438': { slug: null, name: 'Liechtenstein' },
         '056': { slug: 'belgium', name: 'Belgium' },
         '070': { slug: null, name: 'Bosnia and Herzegovina' },
         '100': { slug: 'bulgaria', name: 'Bulgaria' },
