@@ -110,7 +110,7 @@
             // Create a container div to hold both badges side by side
             var container = L.DomUtil.create('div', 'badge-container');
             // Back badge styled like the country count badge
-            var backDiv = L.DomUtil.create('a', 'country-count-badge back-tile icon fa-arrow-left', container);
+            var backDiv = L.DomUtil.create('a', 'country-count-badge back-tile', container);
             backDiv.href = 'https://michaloleszak.com';
             backDiv.title = 'Back to michaloleszak.com';
             backDiv.setAttribute('aria-label', 'Back to michaloleszak.com');
@@ -118,10 +118,10 @@
             backDiv.style.display = 'inline-flex';
             backDiv.style.alignItems = 'center';
             backDiv.style.justifyContent = 'center';
-            backDiv.style.width = '80px';
-            backDiv.style.height = '80px';
+            backDiv.style.width = '120px';
+            backDiv.style.height = '120px';
             backDiv.style.marginRight = '0.5rem';
-            backDiv.innerHTML = '<span class="fa-arrow-left" style="font-size:2.5em; color:#7798BA;"></span>';
+            backDiv.innerHTML = '<span class="icon fa-arrow-left" style="font-size:2.5em; color:#7798BA;"></span>';
             L.DomEvent.disableClickPropagation(backDiv);
             // The actual country count badge will be added by CountBadge
             return container;
@@ -146,7 +146,11 @@
             var countBadge = L.DomUtil.create('div', 'country-count-badge', container);
             countBadge.innerHTML = '<span class="count">' + totalVisited + '</span>' +
                 '<span class="label">countries<br>visited</span>';
-            countBadge.style.display = 'inline-block';
+            countBadge.style.display = 'inline-flex';
+            countBadge.style.alignItems = 'center';
+            countBadge.style.justifyContent = 'center';
+            countBadge.style.width = '120px';
+            countBadge.style.height = '120px';
             countBadge.style.verticalAlign = 'top';
         }
     }, 0);
