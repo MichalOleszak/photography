@@ -55,7 +55,7 @@
         '764': { slug: 'thailand', name: 'Thailand' },
         '792': { slug: 'turkey', name: 'Turkey' },
         '784': { slug: 'uae', name: 'United Arab Emirates' },
-        '807': { slug: null, name: 'North Macedonia' },
+        '807': { slug: 'macedonia', name: 'North Macedonia' },
         '826': { slug: 'uk', name: 'United Kingdom' },
         '840': { slug: 'us', name: 'United States' },
         '704': { slug: 'vietnam', name: 'Vietnam' }
