@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -53,6 +54,22 @@ class GallerySyncTests(unittest.TestCase):
             self.assertEqual(result, "added Peru to map")
             self.assertIn("'840': { slug: 'us', name: 'United States' },", map_path.read_text())
             self.assertIn("'604': { slug: 'peru', name: 'Peru' },", map_path.read_text())
+            subprocess.run(["node", "--check", str(map_path)], check=True)
+
+    def test_does_not_add_a_second_comma_after_a_final_comma(self):
+        with tempfile.TemporaryDirectory() as directory:
+            map_path = Path(directory) / "map-leaflet.js"
+            map_path.write_text(
+                "var visitedCountries = {\n"
+                "    '840': { slug: 'us', name: 'United States' },\n"
+                "    };\n\n    // Small territories\n"
+            )
+            with patch.object(gallery, "country_details", return_value=("604", "Peru")):
+                gallery.ensure_map_entry(map_path, "peru")
+
+            contents = map_path.read_text()
+            self.assertNotIn("},,", contents)
+            subprocess.run(["node", "--check", str(map_path)], check=True)
 
     def test_links_a_previously_visited_country_without_duplicate_entry(self):
         with tempfile.TemporaryDirectory() as directory:
