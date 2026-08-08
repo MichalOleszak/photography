@@ -1,8 +1,9 @@
 import importlib.util
+import json
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 
 SCRIPT = Path(__file__).parents[1] / "scripts" / "sync_gallery.py"
@@ -17,6 +18,19 @@ class GallerySyncTests(unittest.TestCase):
         self.assertEqual(gallery.country_query("new_zealand"), "new zealand")
         self.assertEqual(gallery.country_query("costarica"), "Costa Rica")
         self.assertEqual(gallery.country_query("macedonia"), "North Macedonia")
+
+    def test_reads_country_id_from_world_atlas_data(self):
+        atlas = {
+            "objects": {
+                "countries": {
+                    "geometries": [{"id": "144", "properties": {"name": "Sri Lanka"}}]
+                }
+            }
+        }
+        response = MagicMock()
+        with patch.object(gallery, "urlopen", return_value=response):
+            with patch.object(gallery.json, "load", return_value=atlas):
+                self.assertEqual(gallery.country_details("sri_lanka"), ("144", "Sri Lanka"))
 
     def test_creates_missing_country_page_only_once(self):
         with tempfile.TemporaryDirectory() as directory:

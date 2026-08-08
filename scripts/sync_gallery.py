@@ -14,11 +14,11 @@ import subprocess
 import sys
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote
 from urllib.request import urlopen
 
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png"}
+WORLD_ATLAS_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"
 COUNTRY_RE = re.compile(r"^[a-z0-9]+(?:[_-][a-z0-9]+)*$")
 MAP_ENTRY_RE = re.compile(
     r"^(?P<indent>\s*)'(?P<code>\d{3})': \{ slug: (?P<slug>null|'[^']+'), name: '(?P<name>[^']+)' \},?$",
@@ -27,29 +27,38 @@ MAP_ENTRY_RE = re.compile(
 
 
 def country_query(slug: str) -> str:
-    """Turn a gallery folder name into a REST Countries lookup term."""
+    """Turn a gallery folder name into a World Atlas country name."""
     aliases = {
         "costarica": "Costa Rica",
         "macedonia": "North Macedonia",
         "uae": "United Arab Emirates",
         "uk": "United Kingdom",
-        "us": "United States",
+        "us": "United States of America",
     }
     return aliases.get(slug, slug.replace("_", " ").replace("-", " "))
 
 
+def normalized_country_name(name: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", name.lower())
+
+
 def country_details(slug: str) -> tuple[str, str]:
-    """Return ISO numeric code and display name for a new country folder."""
+    """Return ISO numeric code and display name from the map's own dataset."""
     query = country_query(slug)
-    url = "https://restcountries.com/v3.1/name/" + quote(query) + "?fullText=true&fields=name,ccn3"
     try:
-        with urlopen(url, timeout=15) as response:  # nosec B310: fixed HTTPS endpoint
-            countries = json.load(response)
+        with urlopen(WORLD_ATLAS_URL, timeout=15) as response:  # nosec B310: fixed HTTPS endpoint
+            geometries = json.load(response)["objects"]["countries"]["geometries"]
     except (HTTPError, URLError, TimeoutError) as exc:
-        raise RuntimeError(f"Could not look up {query!r} to update the map: {exc}") from exc
-    if len(countries) != 1 or not countries[0].get("ccn3"):
+        raise RuntimeError(f"Could not load the country map data for {query!r}: {exc}") from exc
+    countries = [
+        geometry
+        for geometry in geometries
+        if normalized_country_name(geometry.get("properties", {}).get("name", "")) == normalized_country_name(query)
+    ]
+    if len(countries) != 1:
         raise RuntimeError(f"Could not uniquely identify {query!r} to update the map")
-    return countries[0]["ccn3"].zfill(3), countries[0]["name"]["common"]
+    country = countries[0]
+    return str(country["id"]).zfill(3), country["properties"]["name"]
 
 
 def create_thumbnail(source: Path, destination: Path) -> None:
@@ -108,6 +117,9 @@ def main() -> int:
         images = sorted(path for path in full_dir.iterdir() if path.is_file() and path.suffix.lower() in IMAGE_EXTENSIONS)
         if not images:
             continue
+        # Resolve the map entry first. If the country cannot be identified,
+        # avoid leaving new thumbnails or a page behind in a partial sync.
+        map_result = ensure_map_entry(map_path, slug.replace("_", "-"))
         thumb_dir = thumbs_root / slug
         thumb_dir.mkdir(parents=True, exist_ok=True)
         created_thumbnails = 0
@@ -117,9 +129,6 @@ def main() -> int:
                 create_thumbnail(image, thumbnail)
                 created_thumbnails += 1
         page_created = ensure_country_page(countries_dir, slug)
-        # Jekyll turns underscores in collection names into hyphens in the
-        # generated URL (for example, new_zealand.html → new-zealand.html).
-        map_result = ensure_map_entry(map_path, slug.replace("_", "-"))
         if created_thumbnails or page_created or map_result != "already linked":
             changes.append(f"{slug}: {created_thumbnails} thumbnail(s), "
                            f"country page {'created' if page_created else 'already present'}, {map_result}")

@@ -24,8 +24,8 @@ files or overwrites a thumbnail. For each country folder containing photos it:
 3. makes the country clickable and blue (visited) on the homepage map.
 
 For a country that is not already on the map, it resolves the folder name once
-through the REST Countries public API to obtain its ISO numeric map code and
-display name. Use ordinary lowercase folder names such as `peru`,
+from the same World Atlas dataset used by the homepage map to obtain its ISO
+numeric map code and display name. Use ordinary lowercase folder names such as `peru`,
 `new_zealand`, or `costa-rica`; the script recognizes the existing short names
 `us`, `uk`, `uae`, `macedonia`, and `costarica` too.
 
