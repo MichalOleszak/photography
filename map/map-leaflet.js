@@ -58,7 +58,7 @@
         '807': { slug: 'macedonia', name: 'North Macedonia' },
         '826': { slug: 'uk', name: 'United Kingdom' },
         '840': { slug: 'us', name: 'United States' },
-        '704': { slug: 'vietnam', name: 'Vietnam' }
+        '704': { slug: 'vietnam', name: 'Vietnam' },
         '144': { slug: 'sri-lanka', name: 'Sri Lanka' },
     };
 
