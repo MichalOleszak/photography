@@ -96,7 +96,12 @@ def ensure_map_entry(map_path: Path, slug: str) -> str:
     if marker not in text:
         raise RuntimeError("Could not find the visitedCountries block in map/map-leaflet.js")
     entry = f"        '{code}': {{ slug: '{slug}', name: '{name}' }},\n"
-    map_path.write_text(text.replace(marker, entry + marker, 1))
+    before_marker, after_marker = text.split(marker, 1)
+    # The existing final property may not have a trailing comma. Add one only
+    # when a property precedes the new entry, keeping an empty object valid.
+    before_marker = before_marker.rstrip()
+    separator = "," if before_marker.endswith("}") else ""
+    map_path.write_text(before_marker + separator + "\n" + entry + marker + after_marker)
     return f"added {name} to map"
 
 

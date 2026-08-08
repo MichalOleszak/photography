@@ -42,11 +42,16 @@ class GallerySyncTests(unittest.TestCase):
     def test_adds_clickable_visited_country_to_map(self):
         with tempfile.TemporaryDirectory() as directory:
             map_path = Path(directory) / "map-leaflet.js"
-            map_path.write_text("var visitedCountries = {\n    };\n\n    // Small territories\n")
+            map_path.write_text(
+                "var visitedCountries = {\n"
+                "    '840': { slug: 'us', name: 'United States' }\n"
+                "    };\n\n    // Small territories\n"
+            )
             with patch.object(gallery, "country_details", return_value=("604", "Peru")):
                 result = gallery.ensure_map_entry(map_path, "peru")
 
             self.assertEqual(result, "added Peru to map")
+            self.assertIn("'840': { slug: 'us', name: 'United States' },", map_path.read_text())
             self.assertIn("'604': { slug: 'peru', name: 'Peru' },", map_path.read_text())
 
     def test_links_a_previously_visited_country_without_duplicate_entry(self):
