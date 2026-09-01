@@ -89,8 +89,12 @@
     });
 
     // CartoDB DarkMatter (no labels) — retina tiles rendered at native 512px
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png', {
-        subdomains: 'abcd',
+    var cartoKey = window.CARTO_BASEMAPS_KEY;
+    if (!cartoKey) {
+        console.warn('CARTO_BASEMAPS_KEY is not configured; Carto basemap tiles may not load.');
+    }
+    var cartoKeyParameter = cartoKey ? '?key=' + encodeURIComponent(cartoKey) : '';
+    L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}@2x.png' + cartoKeyParameter, {
         maxZoom: 19,
         tileSize: 512,
         zoomOffset: -1
