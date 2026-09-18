@@ -11,6 +11,7 @@
     // slug is null for countries visited but without a dedicated photo page
     // ───────────────────────────────────────────────
     var visitedCountries = {
+        '008': { slug: null, name: 'Albania' },
         '040': { slug: 'austria', name: 'Austria' },
         '442': { slug: null, name: 'Luxembourg' },
         '438': { slug: null, name: 'Liechtenstein' },
