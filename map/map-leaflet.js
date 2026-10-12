@@ -61,6 +61,7 @@
         '840': { slug: 'us', name: 'United States' },
         '704': { slug: 'vietnam', name: 'Vietnam' },
         '144': { slug: 'sri-lanka', name: 'Sri Lanka' },
+        '688': { slug: 'serbia', name: 'Serbia' },
     };
 
     // Small territories that may not appear in the 50m TopoJSON
